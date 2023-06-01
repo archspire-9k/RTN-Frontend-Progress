@@ -1,9 +1,16 @@
-import { View, Text, FlatList, StyleSheet, StatusBar, SafeAreaView, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, FlatList, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { Header, TodoItem } from "../components";
-import { COLORS, SIZES } from "../../constants";
+import { COLORS, SIZES, icons } from "../../constants";
 import { useState } from "react";
 import { connect } from 'react-redux';
 import { addTodo, deleteTodo } from '../../redux/actions';
+
+type ItemProps = {
+    color: string,
+    size: number,
+    onPress: () => void
+};
+
 
 
 const DATA = [
@@ -33,6 +40,26 @@ const MainScreen = () => {
     deleteTodo(id)
   }
   const [todoArray, setTodoArray] = useState(DATA);
+
+
+  const CircleButton = ({color, size, onPress} : ItemProps) => (
+    <TouchableOpacity
+      style={{
+        position: "absolute",
+        bottom: 12,
+        right: 12,
+        backgroundColor: color,
+        alignItems: "center",
+        justifyContent: "center",
+        width: size,
+        height: size,
+        borderRadius: size / 2,
+      }}
+      onPress={onPress}
+    >
+      <Image source={icons.add_circle} style={{ tintColor: '#fff'}}/>
+    </TouchableOpacity>
+  );
 
   //render the list 
   const renderList = () => (
@@ -71,8 +98,11 @@ const MainScreen = () => {
 
     <View style={styles.container}>
       {renderList()}
-
-      <TouchableOpacity/>
+      <CircleButton
+        color="#282c34"
+        size={60}
+        onPress={() => alert("Button pressed!")}
+      />
 
     </View>
   )

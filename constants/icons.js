@@ -36,6 +36,7 @@ const focus = require("../assets/icons/focus.png")
 const chat = require("../assets/icons/chat.png")
 const edit = require("../assets/icons/edit.png")
 const deleteIcon = require("../assets/icons/delete.png")
+const add_circle = require("../assets/icons/add_circle.png")
 
 export default {
     emailIcon,
@@ -75,5 +76,6 @@ export default {
     focus,
     chat,
     edit, 
-    deleteIcon
+    deleteIcon,
+    add_circle
 }

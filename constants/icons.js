@@ -34,6 +34,8 @@ const back = require("../assets/icons/back.png")
 const clock = require("../assets/icons/clock.png")
 const focus = require("../assets/icons/focus.png")
 const chat = require("../assets/icons/chat.png")
+const edit = require("../assets/icons/edit.png")
+const deleteIcon = require("../assets/icons/delete.png")
 
 export default {
     emailIcon,
@@ -71,5 +73,7 @@ export default {
     back,
     clock,
     focus,
-    chat
+    chat,
+    edit, 
+    deleteIcon
 }

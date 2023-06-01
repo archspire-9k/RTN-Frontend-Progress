@@ -8,7 +8,13 @@ import {
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { COLORS, FONTS, SIZES, icons } from '../../constants';
 
-const TodoItem = ({ containerStyle, title, onPress  }) => {
+type ItemProps = {
+    title: string,
+    containerStyle: object
+    onPress: () => void
+};
+
+const TodoItem = ({ title, containerStyle, onPress }: ItemProps) => {
     //save the food in favourites ()
     const [save, setSave] = React.useState(false);
 
@@ -17,22 +23,26 @@ const TodoItem = ({ containerStyle, title, onPress  }) => {
             style={{
                 flexDirection: 'row',
                 borderRadius: SIZES.radius,
-                backgroundColor: COLORS.lightGray2,
+                backgroundColor: "#282c34",
                 ...containerStyle
             }}
             onPress={onPress}>
-            <View style={{ flex: 1, marginLeft: 20 }}>
+            <View style={{ flex: 4, marginLeft: 20 }}>
                 <Text style={{ ...FONTS.h3, fontSize: 17 }}>{title}</Text>
             </View>
 
-            {/* Favorite */}
-            {/* <View style={{ flexDirection: 'row', position: 'absolute', bottom: 5, right: SIZES.radius }}>
-                <Image source={icons.love} style={{ width: 20, height: 20, tintColor: save ? COLORS.red : COLORS.darkGray }} />
-                <TouchableWithoutFeedback onPress={() => setSave(!save)}>    
-                    <Text style={{ color: COLORS.darkGray2, ...FONTS.body5 }}> {save ? 'Saved' : 'Unsaved'} </Text>
+            {/* Delete & Edit */}
+            <View style={{ flexDirection: 'row', position: 'absolute', bottom: 5, right: SIZES.radius }}>
+                <Image source={icons.edit} style={{ width: 20, height: 20, tintColor: save ? COLORS.LIGHT_YELLOW : COLORS.darkGray }} />
+                <TouchableWithoutFeedback onPress={() => setSave(!save)}>
+                    <Text style={{ color: COLORS.darkGray2, ...FONTS.body5 }}> {save ? 'Saved' : 'Edit'} </Text>
                 </TouchableWithoutFeedback>
-            </View> */}
-        </TouchableOpacity>
+                <Image source={icons.deleteIcon} style={{ width: 20, height: 20, tintColor: save ? COLORS.red : COLORS.darkGray }} />
+                <TouchableWithoutFeedback onPress={() => setSave(!save)}>
+                    <Text style={{ color: COLORS.darkGray2, ...FONTS.body5 }}> {save ? 'Saved' : 'Delete'} </Text>
+                </TouchableWithoutFeedback>
+            </View>
+        </TouchableOpacity >
     )
 }
 

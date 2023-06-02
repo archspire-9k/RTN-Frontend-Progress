@@ -4,7 +4,7 @@ import { COLORS, SIZES, icons } from "../../constants";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteTodo, editTodo } from '../../redux/actions';
-import { ModalPresentationIOS } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
+import { appStart } from '../../redux/actions';
 
 
 type ItemProps = {
@@ -14,7 +14,7 @@ type ItemProps = {
 };
 
 const MainScreen = ({ navigation }) => {
-  const dispatch = useDispatch();
+
   const [newTask, setNewTask] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
   const [editId, setEditId] = useState()
@@ -22,6 +22,12 @@ const MainScreen = ({ navigation }) => {
   const { todo_list } = useSelector(
     state => state.todos,
   );
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    appStart();
+  }, []);
 
   const handleDeleteTodo = (id) => {
     dispatch(deleteTodo(id))
@@ -104,7 +110,7 @@ const MainScreen = ({ navigation }) => {
         }}>
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <TextInput style={styles.modalText} value = {newTask} onChangeText={(text) => {setNewTask(text)}}/>
+            <TextInput style={styles.modalText} value={newTask} onChangeText={(text) => { setNewTask(text) }} />
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => {

@@ -27,12 +27,6 @@ export const AppNavigator = () => {
 
 const App = () => {
 
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(appStart());
-  // }, []);
-
   return (
     <Provider store={store}>
       <AppNavigator />

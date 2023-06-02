@@ -5,7 +5,6 @@ import {
     Text,
     Image,
 } from 'react-native';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { COLORS, FONTS, SIZES, icons } from '../../constants';
 
 type ItemProps = {
@@ -33,14 +32,14 @@ const TodoItem = ({ title, containerStyle, onPress, onPressEdit }: ItemProps) =>
             {/* Delete & Edit */}
             <View style={{ flexDirection: 'row', position: 'absolute', bottom: 5, right: SIZES.radius }}>
                 <Image source={icons.edit} style={{ width: 20, height: 20, tintColor: COLORS.LIGHT_YELLOW }} />
-                <TouchableWithoutFeedback onPress={onPressEdit}>
+                <TouchableOpacity onPress={onPressEdit}>
                     <Text style={{ color: COLORS.darkGray2, ...FONTS.body5 }}> {'Edit'} </Text>
-                </TouchableWithoutFeedback>
+                </TouchableOpacity>
                 <View style={{width: 10}}/>
                 <Image source={icons.deleteIcon} style={{ width: 20, height: 20, tintColor: COLORS.red }} />
-                <TouchableWithoutFeedback onPress={onPress}>
+                <TouchableOpacity onPress={onPress}>
                     <Text style={{ color: COLORS.darkGray2, ...FONTS.body5 }}> {'Delete'} </Text>
-                </TouchableWithoutFeedback>
+                </TouchableOpacity>
             </View>
         </View >
     )

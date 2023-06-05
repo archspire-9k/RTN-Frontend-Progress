@@ -10,8 +10,19 @@
     "test": "jest"
   },
   "dependencies": {
+    "@mediapipe/face_mesh": "^0.4.1633559619",
+    "@react-native-async-storage/async-storage": "^1.18.1",
+    "@tensorflow-models/face-landmarks-detection": "^1.0.2",
+    "@tensorflow/tfjs": "^4.6.0",
+    "@tensorflow/tfjs-react-native": "^0.8.0",
+    "expo": "^48.0.0",
+    "expo-camera": "~13.2.1",
+    "expo-gl": "~12.4.0",
+    "expo-gl-cpp": "^11.4.0",
     "react": "18.2.0",
-    "react-native": "0.71.8"
+    "react-native": "0.71.8",
+    "react-native-canvas": "^0.1.39",
+    "react-native-fs": "^2.20.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

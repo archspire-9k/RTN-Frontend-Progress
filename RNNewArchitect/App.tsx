@@ -65,6 +65,7 @@ function App(): JSX.Element {
 
   return (
     <View
+      testID='testView'
       style={
         { flex: 1, ...backgroundStyle }}>
       <StatusBar

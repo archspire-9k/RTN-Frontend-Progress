@@ -18,10 +18,13 @@
     "@tensorflow/tfjs-backend-webgl": "4.4.0",
     "@tensorflow/tfjs-converter": "4.4.0",
     "@tensorflow/tfjs-core": "4.4.0",
+    "@types/react-native-canvas": "^0.1.9",
     "react": "18.2.0",
     "react-native": "0.71.8",
+    "react-native-canvas": "^0.1.39",
     "react-native-reanimated": "2.14.4",
-    "react-native-vision-camera": "^2.15.4"
+    "react-native-vision-camera": "^2.15.4",
+    "react-native-webview": "2.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

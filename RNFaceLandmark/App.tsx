@@ -9,7 +9,7 @@ import {
 } from 'react-native-vision-camera';
 import { useSharedValue, useAnimatedStyle } from 'react-native-reanimated';
 import Animated from 'react-native-reanimated';
-import { Canvas, Image, Circle, useCanvasRef } from '@shopify/react-native-skia';
+import { Canvas, Circle, useCanvasRef } from '@shopify/react-native-skia';
 import * as faceLandmarksDetection from "@tensorflow-models/face-landmarks-detection";
 // import { drawMesh } from './src/drawMesh';
 
@@ -20,12 +20,6 @@ const inputResolution = {
 const videoConstraints = {
   width: inputResolution.width,
   height: inputResolution.height,
-};
-
-const model = faceLandmarksDetection.SupportedModels.MediaPipeFaceMesh;
-const detectorConfig: faceLandmarksDetection.MediaPipeFaceMeshTfjsModelConfig = {
-  runtime: 'tfjs', // or 'tfjs',
-  refineLandmarks: false
 };
 
 
@@ -73,26 +67,20 @@ function App() {
   }, []);
 
   useEffect(() => {
-    setTimeout(() => {
-      // you can pass an optional rectangle
-      // to only save part of the image
-      const image = canvasRef.current?.makeImageSnapshot();
-      if (image) {
-        // you can use image in an <Image> component
-        // Or save to file using encodeToBytes -> Uint8Array
-        const bytes = image.encodeToBytes();
-      }
-    }, 1000)
-  });
-  // useEffect(() => {
-  //   const checkPermissions = async () => {
-  //     const detector = await faceLandmarksDetection.createDetector(
-  //       model,
-  //       detectorConfig
-  //     );
-  //     setDetector(detector);
-  //   }
-  // }, []);
+    const createDetector = async () => {
+      const model = faceLandmarksDetection.SupportedModels.MediaPipeFaceMesh;
+      const detectorConfig: faceLandmarksDetection.MediaPipeFaceMeshTfjsModelConfig = {
+        runtime: 'tfjs', // or 'tfjs',
+        refineLandmarks: false
+      };
+      const detector = await faceLandmarksDetection.createDetector(
+        model,
+        detectorConfig
+      ).catch((e) => { console.log(e) });
+      setDetector(detector);
+    }
+    createDetector();
+  }, []);
 
   if (device == null) {
     return null;
@@ -120,7 +108,6 @@ function App() {
       //   height: inputResolution.height */}
       {/* // }} */}
       <Canvas style={{ flex: 1 }} ref={canvasRef}>
-        <Circle r={128} cx={128} cy={128} color="red" />
       </Canvas>
     </>
   );

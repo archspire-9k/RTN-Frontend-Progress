@@ -42,6 +42,7 @@ const onNavigationStateChange = (navigationState: WebViewNavigation) => {
   // parseURLParams is a pseudo function.
   // Make sure to write your own function or install a package
   console.log(`check the domains:  ${url}`);
+  //TODO: fix authorization not found
 };
 
 export default App;

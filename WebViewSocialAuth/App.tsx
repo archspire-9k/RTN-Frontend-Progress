@@ -27,7 +27,7 @@ function App(): JSX.Element {
       />
       <WebView
         source={{
-          uri: 'http://172.20.30.90:8080/realms/SpringBootKeycloak/login-actions/authenticate?client_id=portal-app',
+          uri: 'http://172.20.30.90:8080/realms/SpringBootKeycloak/protocol/openid-connect/auth?response_type=code&client_id=portal-app&scope=openid&redirect_uri=http://localhost:8082/login/oauth2/code/keycloak',
         }}
         style={{marginTop: 20}}
         onNavigationStateChange={onNavigationStateChange}

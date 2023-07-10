@@ -27,24 +27,21 @@ function App(): JSX.Element {
       />
       <WebView
         source={{
-          uri: 'http://172.20.30.90:8082',
+          uri: 'http://172.20.30.90:8080/realms/SpringBootKeycloak/login-actions/authenticate?client_id=portal-app',
         }}
         style={{marginTop: 20}}
+        onNavigationStateChange={onNavigationStateChange}
       />
     </SafeAreaView>
   );
 }
 
-// const onNavigationStateChange = (navigationState: WebViewNavigation) => {
-//   const url = navigationState.url;
+const onNavigationStateChange = (navigationState: WebViewNavigation) => {
+  const url = navigationState.url;
 
-//   // parseURLParams is a pseudo function.
-//   // Make sure to write your own function or install a package
-//   const params = parseURLParams(url);
-
-//   if (params.token) {
-//     // Save token for native requests & move to the next screen
-//   }
-// };
+  // parseURLParams is a pseudo function.
+  // Make sure to write your own function or install a package
+  console.log(url);
+};
 
 export default App;

@@ -41,7 +41,7 @@ const onNavigationStateChange = (navigationState: WebViewNavigation) => {
 
   // parseURLParams is a pseudo function.
   // Make sure to write your own function or install a package
-  console.log(url);
+  console.log(`check the domains:  ${url}`);
 };
 
 export default App;

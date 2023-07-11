@@ -27,11 +27,12 @@ function App(): JSX.Element {
       />
       <WebView
         source={{
-          uri: 'http://172.20.30.90:8080/realms/SpringBootKeycloak/protocol/openid-connect/auth?response_type=code&client_id=portal-app&scope=openid&redirect_uri=http://172.20.30.90:8082/login/oauth2/code/keycloak',
+          uri: 'http://172.20.30.90:8080/realms/SpringBootKeycloak/protocol/openid-connect/auth?response_type=code&client_id=portal-app&scope=openid&redirect_uri=http://172.20.30.90:8082/user',
         }}
         // eslint-disable-next-line react-native/no-inline-styles
         style={{marginTop: 20}}
         onNavigationStateChange={onNavigationStateChange}
+        javaScriptCanOpenWindowsAutomatically={true}
       />
     </SafeAreaView>
   );
